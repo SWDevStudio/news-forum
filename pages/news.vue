@@ -1,5 +1,8 @@
 <template>
   <div class="container news">
+    <b-alert :show="news === null">
+      Сервис сообщений временно не доступен
+    </b-alert>
     <div class="row justify-content-between">
       <div
         v-for="(item, key) in news"
