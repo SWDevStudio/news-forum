@@ -3,7 +3,7 @@
     <div class="row login justify-content-center">
       <div class="col-lg-6 col-md-12">
         <b-alert :show="error" variant="danger">
-          Ваш логин или пароль не верен
+          Имя пользователя или пароль введены не верно
         </b-alert>
         <b-alert :show="performed" variant="success">
           Авторизация выполнена, вы будете перенесены в профиль
@@ -18,7 +18,7 @@
           >
             <b-form-input
               id="name"
-              v-model="name"
+              v-model="login"
               :state="state"
               trim
             ></b-form-input>
@@ -47,7 +47,7 @@
 export default {
   data() {
     return {
-      name: "",
+      login: "",
       password: "",
       error: false,
       performed: false,
@@ -55,15 +55,12 @@ export default {
   },
   computed: {
     state() {
-      return this.name.length >= 4
-    },
-    valid() {
-      return this.password === "12345"
+      return this.login.length >= 4
     },
     invalidFeedback() {
-      if (this.name.length > 4) {
+      if (this.login.length > 4) {
         return ""
-      } else if (this.name.length > 0) {
+      } else if (this.login.length > 0) {
         return "Enter at least 4 characters"
       } else {
         return "Please enter something"
@@ -77,9 +74,11 @@ export default {
     sendForm() {
       // типо отправил :)
       // let data = axios.get(`host/authorize?login=${this.name}&password=${this.password}`)
-      if (this.name === "Admin" && this.password === "12345") {
+      if (this.login === "Admin" && this.password === "12345") {
         this.performed = true
-        return ""
+        localStorage.user = true
+        setTimeout(() => this.$router.replace({ path: "/profile" }), 3000)
+        return
       }
       this.error = true
     },

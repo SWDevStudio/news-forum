@@ -1,17 +1,7 @@
-export const state = () => ({
-  user: {},
-})
+export const state = () => ({})
 
-export const mutations = {
-  setUser: (state, data) => (state.user = data),
-}
+export const mutations = {}
 
-export const actions = {
-  authorization({ commit }, userData) {
-    commit("setUser", userData)
-  },
-}
+export const actions = {}
 
-export const getters = {
-  user: (state) => state.user,
-}
+export const getters = {}
