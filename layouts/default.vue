@@ -13,7 +13,8 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <n-link to="/news" class="nav-link">Новости </n-link>
+            <n-link to="/login" class="nav-link">Авторизация</n-link>
+            <n-link to="/profile" class="nav-link">Профиль</n-link>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
