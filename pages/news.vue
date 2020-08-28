@@ -2,9 +2,9 @@
   <div class="container news">
     <div class="row justify-content-between">
       <div
-        class="col-lg-4 col-md-6 news-block mb-auto"
         v-for="(item, key) in news"
         :key="key"
+        class="col-lg-4 col-md-6 news-block mb-auto"
       >
         <h5 class="news-block__title">{{ item.title }}</h5>
         <div class="news-block__img">
