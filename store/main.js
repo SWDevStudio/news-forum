@@ -1,9 +1,11 @@
 export const state = () => ({
   news: [],
+  user: false,
 })
 
 export const mutations = {
   setNews: (s, info) => (s.news = info),
+  setUser: (s, data) => (s.user = data),
 }
 
 export const actions = {
@@ -18,8 +20,12 @@ export const actions = {
       commit("setNews", null)
     }
   },
+  activeUser({ commit }) {
+    commit("setUser", true)
+  },
 }
 
 export const getters = {
   news: (s) => s.news,
+  user: (s) => s.user,
 }

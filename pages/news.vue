@@ -30,6 +30,10 @@ export default {
     ...mapGetters({
       news: "main/news",
     }),
+    count() {
+      // eslint-disable-next-line no-undef
+      return store.state.test
+    },
   },
 }
 </script>

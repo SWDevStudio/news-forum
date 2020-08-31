@@ -39,10 +39,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
 export default {
   name: "Profile",
+  computed: {
+    ...mapGetters({
+      user: "main/user",
+    }),
+  },
   mounted() {
-    if (localStorage.user !== "true") {
+    if (!this.user) {
       this.$router.replace({ path: "/login" })
     }
   },

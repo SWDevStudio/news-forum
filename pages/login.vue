@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex"
 export default {
   data() {
     return {
@@ -53,7 +54,13 @@ export default {
       performed: false,
     }
   },
+  mounted() {
+    console.log(this.user)
+  },
   computed: {
+    ...mapGetters({
+      user: "main/user",
+    }),
     state() {
       return this.login.length >= 4
     },
@@ -79,6 +86,9 @@ export default {
     },
   },
   methods: {
+    ...mapActions({
+      activeUser: "main/activeUser",
+    }),
     resetError() {
       this.error = false
     },
@@ -87,6 +97,7 @@ export default {
       // let data = axios.get(`host/authorize?login=${this.name}&password=${this.password}`)
       if (this.login === "Admin" && this.password === "12345") {
         this.performed = true
+        this.activeUser()
         localStorage.user = true
         setTimeout(() => this.$router.replace({ path: "/profile" }), 3000)
         return
