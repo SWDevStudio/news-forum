@@ -70,7 +70,18 @@ export default {
       return this.state === true ? "Thank you" : ""
     },
   },
+  watch: {
+    login() {
+      this.resetError()
+    },
+    password() {
+      this.resetError()
+    },
+  },
   methods: {
+    resetError() {
+      this.error = false
+    },
     sendForm() {
       // типо отправил :)
       // let data = axios.get(`host/authorize?login=${this.name}&password=${this.password}`)
