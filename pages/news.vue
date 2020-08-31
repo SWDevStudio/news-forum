@@ -20,20 +20,15 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex"
+import { mapGetters } from "vuex"
 export default {
   name: "News",
+  asyncData({ store }) {
+    return store.dispatch("main/fetchNews")
+  },
   computed: {
     ...mapGetters({
       news: "main/news",
-    }),
-  },
-  created() {
-    this.fetchNews()
-  },
-  methods: {
-    ...mapActions({
-      fetchNews: "main/fetchNews",
     }),
   },
 }
@@ -41,10 +36,5 @@ export default {
 <style lang="scss">
 .news {
   padding-top: 20px;
-}
-.news-block {
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*justify-content: space-between;*/
 }
 </style>
