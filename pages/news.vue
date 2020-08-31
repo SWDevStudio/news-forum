@@ -3,7 +3,7 @@
     <b-alert :show="news === null">
       Сервис сообщений временно не доступен
     </b-alert>
-    <div class="row justify-content-between">
+    <div class="row">
       <div
         v-for="(item, key) in news"
         :key="key"
