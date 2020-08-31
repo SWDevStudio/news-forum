@@ -42,13 +42,18 @@
 import { mapGetters } from "vuex"
 export default {
   name: "Profile",
+  asyncData({ app }) {
+    return {
+      admin: app.$cookies.get("admin"),
+    }
+  },
   computed: {
     ...mapGetters({
       user: "main/user",
     }),
   },
-  mounted() {
-    if (!this.user) {
+  created() {
+    if (!this.admin) {
       this.$router.replace({ path: "/login" })
     }
   },

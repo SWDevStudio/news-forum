@@ -54,9 +54,6 @@ export default {
       performed: false,
     }
   },
-  mounted() {
-    console.log(this.user)
-  },
   computed: {
     ...mapGetters({
       user: "main/user",
@@ -97,14 +94,18 @@ export default {
       // let data = axios.get(`host/authorize?login=${this.name}&password=${this.password}`)
       if (this.login === "Admin" && this.password === "12345") {
         this.performed = true
-        this.activeUser()
-        localStorage.user = true
+        // this.activeUser()
+        // localStorage.user = true
+        this.$cookies.set("admin", true, {
+          path: "/",
+        })
         setTimeout(() => this.$router.replace({ path: "/profile" }), 3000)
         return
       }
       this.error = true
     },
   },
+  // eslint-disable-next-line vue/order-in-components
 }
 </script>
 <style>
